@@ -47,7 +47,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd terraform/ ; /usr/local/bin/terraform destroy -input=false"
+                sh "pwd;cd terraform/ ; /usr/local/bin/terraform destroy --autoapprove"
             }
         }
     }
