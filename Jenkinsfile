@@ -26,7 +26,7 @@ pipeline {
             steps {
                 sh 'pwd;cd terraform/ ; /usr/local/bin/terraform init --reconfigure'
                 sh "pwd;cd terraform/ ; /usr/local/bin/terraform plan -out tfplan_destroy"
-                sh 'pwd;cd terraform/ ; /usr/local/bin/terraform show -no-color tfplan > tfplan_destroy.txt'
+                sh 'pwd;cd terraform/ ; /usr/local/bin/terraform show -no-color tfplan_destroy > tfplan_destroy.txt'
             }
         }
         stage('Approval') {
@@ -47,7 +47,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd terraform/ ; /usr/local/bin/terraform destroy -input=false tfplan_destroy.txt"
+                sh "pwd;cd terraform/ ; /usr/local/bin/terraform destroy -input=false"
             }
         }
     }
